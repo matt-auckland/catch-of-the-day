@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class EditFishForm extends React.Component {
   nameRef = React.createRef();
@@ -6,6 +7,19 @@ class EditFishForm extends React.Component {
   statusRef = React.createRef();
   descRef = React.createRef();
   imageRef = React.createRef();
+
+  static propTypes = {
+    updateFish: PropTypes.func.isRequired,
+    index: PropTypes.string.isRequired,
+    deleteFish: PropTypes.func.isRequired,
+    fish: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired
+    }).isRequired
+  };
 
   handleChange = event => {
     const updatedFish = {
